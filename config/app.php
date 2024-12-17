@@ -1,5 +1,7 @@
 <?php
 
+use Filament\FilamentServiceProvider;
+
 return [
 
     /*

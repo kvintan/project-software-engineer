@@ -33,6 +33,15 @@ class AuthenticatedSessionController extends Controller
         if (!$user) {
             return redirect()->back()->withErrors(['msg' => 'User not authenticated.']);
         }
+
+        if ($user->email === 'admin@bombazjuice') {
+            if (!$user->has_logged_in) {
+                $user->has_logged_in = true;    
+                return redirect('/admin')->with('status', 'You are successfully logged in!');
+            }
+    
+            return redirect('/admin')->with('status', 'You are successfully logged in!');
+        }
     
         if (!$user->has_logged_in) {
             $user->has_logged_in = true;    
