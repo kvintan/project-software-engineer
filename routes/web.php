@@ -41,6 +41,10 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
+Route::get('/history', function () {
+    return view('history');
+})->name('history');
+
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
