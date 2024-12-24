@@ -17,6 +17,7 @@ export default {
                 abezee: ["ABeeZee", "sans-serif"],
                 arimo: ["Arimo", "sans-serif"],
                 afacad: ["Afacad", "serif"],
+                adlam: ["ABeeZee", "serif"],
                 body: [
                     "Inter",
                     "ui-sans-serif",
