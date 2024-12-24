@@ -1,6 +1,6 @@
 <x-layout>
 
-    <img class="mt-[-12.5vh] w-full scale-y-[106%] relative z-[-50]" src="{{ asset('images/profile-background.svg') }}"
+    <img class="mt-[-12.5vh] w-full scale-y-[115%] relative z-[-50]" src="{{ asset('images/profile-background.svg') }}"
         alt="">
     <div class="relative">
         <div class="mt-[-150vh] relative">

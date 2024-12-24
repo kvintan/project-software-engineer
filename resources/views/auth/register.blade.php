@@ -59,14 +59,15 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-[4vh]">
-                    <a class="text-[1.2vw] text-black font-bold hover:underline rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 font-afacad"
+                    <a wire:navigate
+                        class="text-[1.2vw] text-black font-bold hover:underline rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 font-afacad"
                         href="{{ route('login') }}">
                         {{ __('Already registered?') }}
                     </a>
 
                     <x-primary-button
                         class="ml-[1vw] font-afacad h-[7vh] rounded-[2.1vw] hover:brightness-[60%] bg-[radial-gradient(223.16%_67.62%_at_50%_50%,_#698531_26.24%,_#90B042_100%)]">
-                        <div class="text-[1.2vw]">
+                        <div wire:navigate class="text-[1.2vw]">
                             {{ __('Sign Up') }}
                         </div>
                     </x-primary-button>

@@ -37,6 +37,10 @@ Route::get('/store', function () {
     return view('store');
 });
 
+Route::get('/cart', function () {
+    return view('cart');
+});
+
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 

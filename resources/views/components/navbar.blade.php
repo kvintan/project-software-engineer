@@ -17,21 +17,23 @@
             </button>
         </div>
         <div class="hidden lg:flex lg:gap-x-7 relative z-[50]">
-            <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-            <x-nav-link href="/menu" :active="request()->is('menu')">Menu</x-nav-link>
-            <x-nav-link href="/juicelab" :active="request()->is('juicelab')">JuiceLab</x-nav-link>
-            <x-nav-link href="/fruitstats" :active="request()->is('fruitstats')">FruitStats</x-nav-link>
-            <x-nav-link href="/contact-us" :active="request()->is('contact-us')">Contact Us</x-nav-link>
-            <x-nav-link href="/store" :active="request()->is('store')">Store</x-nav-link>
+            <x-nav-link wire:navigate href="/" :active="request()->is('/')">Home</x-nav-link>
+            <x-nav-link wire:navigate href="/menu" :active="request()->is('menu')">Menu</x-nav-link>
+            <x-nav-link wire:navigate href="/juicelab" :active="request()->is('juicelab')">JuiceLab</x-nav-link>
+            <x-nav-link wire:navigate href="/fruitstats" :active="request()->is('fruitstats')">FruitStats</x-nav-link>
+            <x-nav-link wire:navigate href="/contact-us" :active="request()->is('contact-us')">Contact Us</x-nav-link>
+            <x-nav-link wire:navigate href="/store" :active="request()->is('store')">Store</x-nav-link>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end relative z-[30]">
-            <a href="">
-                <img class="pr-6 {{ Request::is('login', 'register', 'store', 'profile') ? 'filter invert' : '' }} 
+            <a wire:navigate href="/cart">
+                <img class="pr-6 {{ Request::is('login', 'register', 'store', 'profile', 'cart') ? 'filter invert' : '' }} 
                hover:brightness-[50%]"
                     src="{{ asset('images/cart-navbar.svg') }}" alt="Logo Cart Navbar">
             </a>
-            <a href="{{ route('profile.redirect') }}">
-                <img class="{{ Request::is('login', 'register', 'store', 'profile') ? 'filter invert' : '' }} 
+            <span
+                class="{{ Request::is('login', 'register', 'store', 'profile', 'cart') ? 'filter invert' : '' }} px-1 rounded-full w-[1.5vw] ml-[-2vw] mr-[1vw] text-center text-lg font-medium text-white flex items-center justify-center">4</span>
+            <a wire:navigate href="{{ route('profile.redirect') }}">
+                <img class="{{ Request::is('login', 'register', 'store', 'profile', 'cart') ? 'filter invert' : '' }} 
                hover:brightness-[50%]"
                     src="{{ asset('images/account-navbar.svg') }}" alt="Logo Account Navbar">
             </a>
