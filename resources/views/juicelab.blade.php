@@ -5,9 +5,10 @@
             alt="JuiceLab Hiasan Jeruk">
         <img class="relative mt-[-95vh] ml-[56vw]" src="{{ asset('images/juicelab-hiasan-botol.svg') }}"
             alt="JuiceLab Hiasan Botol">
-        <img class="relative mt-[-60vh] ml-[9vw]" src="{{ asset('images/juicelab-title.svg') }}" alt="JuiceLab Title">
-        <img class="relative ml-[9vw]" src="{{ asset('images/juicelab-description.svg') }}" alt="JuiceLab Description">
-        <img class="relative ml-[9vw] mt-[3vh]" src="{{ asset('images/juicelab-try-it.svg') }}" alt="JuiceLab Try It">
+        <img class="relative mt-[-56vh] ml-[9vw]" src="{{ asset('images/juicelab-title.svg') }}" alt="JuiceLab Title">
+        <img class="relative ml-[9vw] mt-[3vh]" src="{{ asset('images/juicelab-description.svg') }}"
+            alt="JuiceLab Description">
+        <img class="relative ml-[9vw] mt-[5vh]" src="{{ asset('images/juicelab-try-it.svg') }}" alt="JuiceLab Try It">
     </div>
 
 
