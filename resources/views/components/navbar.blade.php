@@ -27,14 +27,16 @@
         <div class="hidden lg:flex lg:flex-1 lg:justify-end relative z-[30]">
             <a wire:navigate href="/cart">
                 <img class="pr-6 {{ Request::is('login', 'register', 'store', 'profile', 'cart', 'menu', 'fruitstats', 'juicelab', 'history') ? 'filter invert' : '' }} 
-               hover:brightness-[50%]"
+                   hover:brightness-[50%]"
                     src="{{ asset('images/cart-navbar.svg') }}" alt="Logo Cart Navbar">
             </a>
-            <span
-                class="{{ Request::is('login', 'register', 'store', 'profile', 'cart', 'menu', 'fruitstats', 'juicelab', 'history') ? 'filter invert' : '' }} px-1 rounded-full w-[1.5vw] ml-[-2vw] mr-[1vw] text-center text-lg font-medium text-white flex items-center justify-center">4</span>
+            <span id="cart-count" wire:navigate
+                class="{{ Request::is('login', 'register', 'store', 'profile', 'cart', 'menu', 'fruitstats', 'juicelab', 'history') ? 'filter invert' : '' }} px-1 rounded-full w-[1.5vw] ml-[-2vw] mr-[1vw] text-center text-lg font-medium text-white flex items-center justify-center">
+                {{ $total_count }}
+            </span>
             <a wire:navigate href="{{ route('profile.redirect') }}">
                 <img class="{{ Request::is('login', 'register', 'store', 'profile', 'cart', 'menu', 'fruitstats', 'juicelab', 'history') ? 'filter invert' : '' }} 
-               hover:brightness-[50%]"
+                   hover:brightness-[50%]"
                     src="{{ asset('images/account-navbar.svg') }}" alt="Logo Account Navbar">
             </a>
         </div>

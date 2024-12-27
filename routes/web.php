@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\CartManagement;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

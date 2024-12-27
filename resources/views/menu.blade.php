@@ -48,12 +48,11 @@
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
             <!-- Heading & Filters -->
             <div class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
+
                 <div class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 h-[55vh]">
                     <div class="h-[25vh] w-full relative mb-[2vh]">
-                        <a href="#">
-                            <img class="relative ml-[2vw] mt-[-3vh]" src="{{ asset('images/menu-botol-1.svg') }}"
-                                alt="Menu Botol 1">
-                        </a>
+                        <img class="relative ml-[2vw] mt-[-3vh]" src="{{ asset('images/menu-botol-1.svg') }}"
+                            alt="Menu Botol 1">
                     </div>
                     <div class="pt-6">
                         <div class="mb-4 flex items-center justify-between gap-4">
@@ -92,9 +91,14 @@
                             <p class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
                                 000</p>
 
-                            <button type="button"
+                            <button wire:click.prevent='addToCart(2)' type="button"
                                 class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
-                                Add Item
+                                <span wire:loading.remove>
+                                    Add Item
+                                </span>
+                                <span wire:loading wire:target='addToCart(1)'>
+                                    Adding...
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -145,7 +149,7 @@
                             <p class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
                                 000</p>
 
-                            <button type="button"
+                            <button wire:click.prevent='addToCart(2)' type="button"
                                 class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
                                 Add Item
                             </button>
@@ -199,7 +203,7 @@
                             <p class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
                                 000</p>
 
-                            <button type="button"
+                            <button wire:click.prevent='addToCart(3)' type="button"
                                 class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
                                 Add Item
                             </button>
@@ -253,7 +257,7 @@
                             <p class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
                                 000</p>
 
-                            <button type="button"
+                            <button wire:click.prevent='addToCart(4)' type="button"
                                 class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
                                 Add Item
                             </button>
@@ -695,461 +699,464 @@
             </div>
         </div>
 
-        <div>
-            <div class="bg-gradient-to-b from-transparent to-[#F9B401] min-screen h-[150vh] relative"></div>
-            <div class="relative mt-[-150vh]">
-                <img class="relative ml-[45vw] mt-[10vh]" src="{{ asset('images/menu-lets-try.svg') }}"
-                    alt="Menu Lets Try">
-                <img class="relative ml-[37vw] mt-[3vh]" src="{{ asset('images/menu-fresh-pair-juice.svg') }}"
-                    alt="Menu Fresh Pair Juice">
+        {{-- <div>
+                <div class="bg-gradient-to-b from-transparent to-[#F9B401] min-screen h-[150vh] relative"></div>
+                <div class="relative mt-[-150vh]">
+                    <img class="relative ml-[45vw] mt-[10vh]" src="{{ asset('images/menu-lets-try.svg') }}"
+                        alt="Menu Lets Try">
+                    <img class="relative ml-[37vw] mt-[3vh]" src="{{ asset('images/menu-fresh-pair-juice.svg') }}"
+                        alt="Menu Fresh Pair Juice">
 
 
-                <div class="mx-auto max-w-screen-xl px-4 2xl:px-0 relative mt-[5vh]">
-                    <!-- Heading & Filters -->
-                    <div class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
-                        <div
-                            class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
-                            <div class="h-[25vh] w-full relative mb-[2vh]">
-                                <a href="#">
-                                    <img class="relative ml-[2vw] mt-[-3vh]"
-                                        src="{{ asset('images/menu-botol-13.svg') }}" alt="Menu Botol 13">
-                                </a>
-                            </div>
-                            <div class="pt-6">
-                                <div class="mb-4 flex items-center justify-between gap-4">
-                                    <div class="flex items-center justify-end gap-1">
-                                        <div id="tooltip-quick-look" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Quick look
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
-
-
-                                        <div id="tooltip-add-to-favorites" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Add to favorites
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
-                                    </div>
+                    <div class="mx-auto max-w-screen-xl px-4 2xl:px-0 relative mt-[5vh]">
+                        <!-- Heading & Filters -->
+                        <div class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
+                            <div
+                                class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
+                                <div class="h-[25vh] w-full relative mb-[2vh]">
+                                    <a href="#">
+                                        <img class="relative ml-[2vw] mt-[-3vh]"
+                                            src="{{ asset('images/menu-botol-13.svg') }}" alt="Menu Botol 13">
+                                    </a>
                                 </div>
-
-                                <a href="#"
-                                    class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Grapple
-                                    Splash</a>
-
-                                <div class="mt-2 flex items-center gap-2">
-                                    <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Apple • Grape
-                                        • Sugar • Mineral Water • Milk</p>
-                                </div>
-
-                                <div class="mt-4 flex items-center justify-between gap-4">
-                                    <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
-                                    <p
-                                        class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
-                                        45.</p>
-                                    <p
-                                        class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
-                                        000</p>
-
-                                    <button type="button"
-                                        class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
-                                        Add Item
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                                <div class="pt-6">
+                                    <div class="mb-4 flex items-center justify-between gap-4">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <div id="tooltip-quick-look" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Quick look
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
 
 
-                        <div
-                            class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
-                            <div class="h-[25vh] w-full relative mb-[2vh]">
-                                <a href="#">
-                                    <img class="relative ml-[2vw] mt-[-3vh]"
-                                        src="{{ asset('images/menu-botol-14.svg') }}" alt="Menu Botol 14">
-                                </a>
-                            </div>
-                            <div class="pt-6">
-                                <div class="mb-4 flex items-center justify-between gap-4">
-                                    <div class="flex items-center justify-end gap-1">
-                                        <div id="tooltip-quick-look" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Quick look
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
-
-
-                                        <div id="tooltip-add-to-favorites" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Add to favorites
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            <div id="tooltip-add-to-favorites" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Add to favorites
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <a href="#"
-                                    class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Avo-nana
-                                    Smash</a>
+                                    <a href="#"
+                                        class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Grapple
+                                        Splash</a>
 
-                                <div class="mt-2 flex items-center gap-2">
-                                    <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Avocado •
-                                        Banana • Sugar • Mineral Water • Milk</p>
-                                </div>
+                                    <div class="mt-2 flex items-center gap-2">
+                                        <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Apple •
+                                            Grape
+                                            • Sugar • Mineral Water • Milk</p>
+                                    </div>
 
-                                <div class="mt-4 flex items-center justify-between gap-4">
-                                    <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
-                                    <p
-                                        class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
-                                        45.</p>
-                                    <p
-                                        class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
-                                        000</p>
+                                    <div class="mt-4 flex items-center justify-between gap-4">
+                                        <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
+                                        <p
+                                            class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
+                                            45.</p>
+                                        <p
+                                            class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
+                                            000</p>
 
-                                    <button type="button"
-                                        class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
-                                        Add Item
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div
-                            class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
-                            <div class="h-[25vh] w-full relative mb-[2vh]">
-                                <a href="#">
-                                    <img class="relative ml-[2vw] mt-[-3vh]"
-                                        src="{{ asset('images/menu-botol-15.svg') }}" alt="Menu Botol 15">
-                                </a>
-                            </div>
-                            <div class="pt-6">
-                                <div class="mb-4 flex items-center justify-between gap-4">
-                                    <div class="flex items-center justify-end gap-1">
-                                        <div id="tooltip-quick-look" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Quick look
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
-
-
-                                        <div id="tooltip-add-to-favorites" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Add to favorites
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
+                                        <button type="button"
+                                            class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
+                                            Add Item
+                                        </button>
                                     </div>
                                 </div>
-
-                                <a href="#"
-                                    class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Tropical
-                                    Twist</a>
-
-                                <div class="mt-2 flex items-center gap-2">
-                                    <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Banana • Kiwi
-                                        • Sugar • Mineral Water • Milk</p>
-                                </div>
-
-                                <div class="mt-4 flex items-center justify-between gap-4">
-                                    <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
-                                    <p
-                                        class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
-                                        45.</p>
-                                    <p
-                                        class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
-                                        000</p>
-
-                                    <button type="button"
-                                        class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
-                                        Add Item
-                                    </button>
-                                </div>
                             </div>
-                        </div>
 
 
-                        <div
-                            class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
-                            <div class="h-[25vh] w-full relative mb-[2vh]">
-                                <a href="#">
-                                    <img class="relative ml-[2vw] mt-[-3vh]"
-                                        src="{{ asset('images/menu-botol-16.svg') }}" alt="Menu Botol 16">
-                                </a>
-                            </div>
-                            <div class="pt-6">
-                                <div class="mb-4 flex items-center justify-between gap-4">
-                                    <div class="flex items-center justify-end gap-1">
-                                        <div id="tooltip-quick-look" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Quick look
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
+                            <div
+                                class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
+                                <div class="h-[25vh] w-full relative mb-[2vh]">
+                                    <a href="#">
+                                        <img class="relative ml-[2vw] mt-[-3vh]"
+                                            src="{{ asset('images/menu-botol-14.svg') }}" alt="Menu Botol 14">
+                                    </a>
+                                </div>
+                                <div class="pt-6">
+                                    <div class="mb-4 flex items-center justify-between gap-4">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <div id="tooltip-quick-look" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Quick look
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
 
 
-                                        <div id="tooltip-add-to-favorites" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Add to favorites
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            <div id="tooltip-add-to-favorites" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Add to favorites
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <a href="#"
-                                    class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Mango
-                                    Mood Splash</a>
+                                    <a href="#"
+                                        class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Avo-nana
+                                        Smash</a>
 
-                                <div class="mt-2 flex items-center gap-2">
-                                    <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Manggo •
-                                        Orange • Sugar • Mineral Water • Milk</p>
-                                </div>
+                                    <div class="mt-2 flex items-center gap-2">
+                                        <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Avocado •
+                                            Banana • Sugar • Mineral Water • Milk</p>
+                                    </div>
 
-                                <div class="mt-4 flex items-center justify-between gap-4">
-                                    <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
-                                    <p
-                                        class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
-                                        45.</p>
-                                    <p
-                                        class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
-                                        000</p>
+                                    <div class="mt-4 flex items-center justify-between gap-4">
+                                        <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
+                                        <p
+                                            class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
+                                            45.</p>
+                                        <p
+                                            class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
+                                            000</p>
 
-                                    <button type="button"
-                                        class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
-                                        Add Item
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div
-                            class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
-                            <div class="h-[25vh] w-full relative mb-[2vh]">
-                                <a href="#">
-                                    <img class="relative ml-[2vw] mt-[-3vh]"
-                                        src="{{ asset('images/menu-botol-17.svg') }}" alt="Menu Botol 17">
-                                </a>
-                            </div>
-                            <div class="pt-6">
-                                <div class="mb-4 flex items-center justify-between gap-4">
-                                    <div class="flex items-center justify-end gap-1">
-                                        <div id="tooltip-quick-look" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Quick look
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
-
-
-                                        <div id="tooltip-add-to-favorites" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Add to favorites
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
+                                        <button type="button"
+                                            class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
+                                            Add Item
+                                        </button>
                                     </div>
                                 </div>
-
-                                <a href="#"
-                                    class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Tropical
-                                    Sunny Splash</a>
-
-                                <div class="mt-2 flex items-center gap-2">
-                                    <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Mango •
-                                        Pineapple • Sugar • Mineral Water • Milk</p>
-                                </div>
-
-                                <div class="mt-4 flex items-center justify-between gap-4">
-                                    <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
-                                    <p
-                                        class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
-                                        45.</p>
-                                    <p
-                                        class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
-                                        000</p>
-
-                                    <button type="button"
-                                        class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
-                                        Add Item
-                                    </button>
-                                </div>
                             </div>
-                        </div>
 
 
-                        <div
-                            class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
-                            <div class="h-[25vh] w-full relative mb-[2vh]">
-                                <a href="#">
-                                    <img class="relative ml-[2vw] mt-[-3vh]"
-                                        src="{{ asset('images/menu-botol-18.svg') }}" alt="Menu Botol 18">
-                                </a>
-                            </div>
-                            <div class="pt-6">
-                                <div class="mb-4 flex items-center justify-between gap-4">
-                                    <div class="flex items-center justify-end gap-1">
-                                        <div id="tooltip-quick-look" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Quick look
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
+                            <div
+                                class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
+                                <div class="h-[25vh] w-full relative mb-[2vh]">
+                                    <a href="#">
+                                        <img class="relative ml-[2vw] mt-[-3vh]"
+                                            src="{{ asset('images/menu-botol-15.svg') }}" alt="Menu Botol 15">
+                                    </a>
+                                </div>
+                                <div class="pt-6">
+                                    <div class="mb-4 flex items-center justify-between gap-4">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <div id="tooltip-quick-look" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Quick look
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
 
 
-                                        <div id="tooltip-add-to-favorites" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Add to favorites
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            <div id="tooltip-add-to-favorites" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Add to favorites
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <a href="#"
-                                    class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Citrus
-                                    Berry Zing</a>
+                                    <a href="#"
+                                        class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Tropical
+                                        Twist</a>
 
-                                <div class="mt-2 flex items-center gap-2">
-                                    <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Orange •
-                                        Strawberry • Sugar •
-                                        Mineral Water • Milk</p>
-                                </div>
+                                    <div class="mt-2 flex items-center gap-2">
+                                        <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Banana •
+                                            Kiwi
+                                            • Sugar • Mineral Water • Milk</p>
+                                    </div>
 
-                                <div class="mt-4 flex items-center justify-between gap-4">
-                                    <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
-                                    <p
-                                        class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
-                                        45.</p>
-                                    <p
-                                        class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
-                                        000</p>
+                                    <div class="mt-4 flex items-center justify-between gap-4">
+                                        <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
+                                        <p
+                                            class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
+                                            45.</p>
+                                        <p
+                                            class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
+                                            000</p>
 
-                                    <button type="button"
-                                        class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
-                                        Add Item
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div
-                            class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
-                            <div class="h-[25vh] w-full relative mb-[2vh]">
-                                <a href="#">
-                                    <img class="relative ml-[2vw] mt-[-3vh]"
-                                        src="{{ asset('images/menu-botol-19.svg') }}" alt="Menu Botol 19">
-                                </a>
-                            </div>
-                            <div class="pt-6">
-                                <div class="mb-4 flex items-center justify-between gap-4">
-                                    <div class="flex items-center justify-end gap-1">
-                                        <div id="tooltip-quick-look" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Quick look
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
-
-
-                                        <div id="tooltip-add-to-favorites" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Add to favorites
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
+                                        <button type="button"
+                                            class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
+                                            Add Item
+                                        </button>
                                     </div>
                                 </div>
-
-                                <a href="#"
-                                    class="text-[1.4vw] font-semibold leading-tight text-black font-afacad hover:underline">Berry
-                                    Banana Bliss</a>
-
-                                <div class="mt-2 flex items-center gap-2">
-                                    <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Strawberry •
-                                        Banana • Sugar •
-                                        Mineral Water • Milk</p>
-                                </div>
-
-                                <div class="mt-4 flex items-center justify-between gap-4">
-                                    <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
-                                    <p
-                                        class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
-                                        45.</p>
-                                    <p
-                                        class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
-                                        000</p>
-
-                                    <button type="button"
-                                        class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
-                                        Add Item
-                                    </button>
-                                </div>
                             </div>
-                        </div>
 
 
-                        <div
-                            class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
-                            <div class="h-[25vh] w-full relative mb-[2vh]">
-                                <a href="#">
-                                    <img class="relative ml-[2vw] mt-[-3vh]"
-                                        src="{{ asset('images/menu-botol-20.svg') }}" alt="Menu Botol 20">
-                                </a>
-                            </div>
-                            <div class="pt-6">
-                                <div class="mb-4 flex items-center justify-between gap-4">
-                                    <div class="flex items-center justify-end gap-1">
-                                        <div id="tooltip-quick-look" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Quick look
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
-                                        </div>
+                            <div
+                                class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
+                                <div class="h-[25vh] w-full relative mb-[2vh]">
+                                    <a href="#">
+                                        <img class="relative ml-[2vw] mt-[-3vh]"
+                                            src="{{ asset('images/menu-botol-16.svg') }}" alt="Menu Botol 16">
+                                    </a>
+                                </div>
+                                <div class="pt-6">
+                                    <div class="mb-4 flex items-center justify-between gap-4">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <div id="tooltip-quick-look" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Quick look
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
 
 
-                                        <div id="tooltip-add-to-favorites" role="tooltip"
-                                            class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
-                                            data-popper-placement="top">
-                                            Add to favorites
-                                            <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            <div id="tooltip-add-to-favorites" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Add to favorites
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <a href="#"
+                                        class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Mango
+                                        Mood Splash</a>
+
+                                    <div class="mt-2 flex items-center gap-2">
+                                        <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Manggo •
+                                            Orange • Sugar • Mineral Water • Milk</p>
+                                    </div>
+
+                                    <div class="mt-4 flex items-center justify-between gap-4">
+                                        <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
+                                        <p
+                                            class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
+                                            45.</p>
+                                        <p
+                                            class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
+                                            000</p>
+
+                                        <button type="button"
+                                            class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
+                                            Add Item
+                                        </button>
+                                    </div>
                                 </div>
+                            </div>
 
-                                <a href="#"
-                                    class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Melon
-                                    Rush</a>
 
-                                <div class="mt-2 flex items-center gap-2">
-                                    <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Melon •
-                                        Pineapple • Sugar • Mineral Water • Milk</p>
+                            <div
+                                class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
+                                <div class="h-[25vh] w-full relative mb-[2vh]">
+                                    <a href="#">
+                                        <img class="relative ml-[2vw] mt-[-3vh]"
+                                            src="{{ asset('images/menu-botol-17.svg') }}" alt="Menu Botol 17">
+                                    </a>
                                 </div>
+                                <div class="pt-6">
+                                    <div class="mb-4 flex items-center justify-between gap-4">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <div id="tooltip-quick-look" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Quick look
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
 
-                                <div class="mt-4 flex items-center justify-between gap-4">
-                                    <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
-                                    <p
-                                        class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
-                                        45.</p>
-                                    <p
-                                        class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
-                                        000</p>
 
-                                    <button type="button"
-                                        class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
-                                        Add Item
-                                    </button>
+                                            <div id="tooltip-add-to-favorites" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Add to favorites
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a href="#"
+                                        class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Tropical
+                                        Sunny Splash</a>
+
+                                    <div class="mt-2 flex items-center gap-2">
+                                        <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Mango •
+                                            Pineapple • Sugar • Mineral Water • Milk</p>
+                                    </div>
+
+                                    <div class="mt-4 flex items-center justify-between gap-4">
+                                        <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
+                                        <p
+                                            class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
+                                            45.</p>
+                                        <p
+                                            class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
+                                            000</p>
+
+                                        <button type="button"
+                                            class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
+                                            Add Item
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div
+                                class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
+                                <div class="h-[25vh] w-full relative mb-[2vh]">
+                                    <a href="#">
+                                        <img class="relative ml-[2vw] mt-[-3vh]"
+                                            src="{{ asset('images/menu-botol-18.svg') }}" alt="Menu Botol 18">
+                                    </a>
+                                </div>
+                                <div class="pt-6">
+                                    <div class="mb-4 flex items-center justify-between gap-4">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <div id="tooltip-quick-look" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Quick look
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
+
+
+                                            <div id="tooltip-add-to-favorites" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Add to favorites
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a href="#"
+                                        class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Citrus
+                                        Berry Zing</a>
+
+                                    <div class="mt-2 flex items-center gap-2">
+                                        <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Orange •
+                                            Strawberry • Sugar •
+                                            Mineral Water • Milk</p>
+                                    </div>
+
+                                    <div class="mt-4 flex items-center justify-between gap-4">
+                                        <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
+                                        <p
+                                            class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
+                                            45.</p>
+                                        <p
+                                            class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
+                                            000</p>
+
+                                        <button type="button"
+                                            class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
+                                            Add Item
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div
+                                class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
+                                <div class="h-[25vh] w-full relative mb-[2vh]">
+                                    <a href="#">
+                                        <img class="relative ml-[2vw] mt-[-3vh]"
+                                            src="{{ asset('images/menu-botol-19.svg') }}" alt="Menu Botol 19">
+                                    </a>
+                                </div>
+                                <div class="pt-6">
+                                    <div class="mb-4 flex items-center justify-between gap-4">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <div id="tooltip-quick-look" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Quick look
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
+
+
+                                            <div id="tooltip-add-to-favorites" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Add to favorites
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a href="#"
+                                        class="text-[1.4vw] font-semibold leading-tight text-black font-afacad hover:underline">Berry
+                                        Banana Bliss</a>
+
+                                    <div class="mt-2 flex items-center gap-2">
+                                        <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">
+                                            Strawberry •
+                                            Banana • Sugar •
+                                            Mineral Water • Milk</p>
+                                    </div>
+
+                                    <div class="mt-4 flex items-center justify-between gap-4">
+                                        <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
+                                        <p
+                                            class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
+                                            45.</p>
+                                        <p
+                                            class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
+                                            000</p>
+
+                                        <button type="button"
+                                            class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
+                                            Add Item
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div
+                                class="w-[19vw] rounded-[0.5vw] p-6 shadow-lg border-[0.05vw] border-gray-500 bg-white h-[55vh]">
+                                <div class="h-[25vh] w-full relative mb-[2vh]">
+                                    <a href="#">
+                                        <img class="relative ml-[2vw] mt-[-3vh]"
+                                            src="{{ asset('images/menu-botol-20.svg') }}" alt="Menu Botol 20">
+                                    </a>
+                                </div>
+                                <div class="pt-6">
+                                    <div class="mb-4 flex items-center justify-between gap-4">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <div id="tooltip-quick-look" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Quick look
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
+
+
+                                            <div id="tooltip-add-to-favorites" role="tooltip"
+                                                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700"
+                                                data-popper-placement="top">
+                                                Add to favorites
+                                                <div class="tooltip-arrow" data-popper-arrow=""></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a href="#"
+                                        class="text-[1.5vw] font-semibold leading-tight text-black font-afacad hover:underline">Melon
+                                        Rush</a>
+
+                                    <div class="mt-2 flex items-center gap-2">
+                                        <p class="font-afacad text-[1.2vw] text-[#565E6C] text-wrap w-[20vw]">Melon •
+                                            Pineapple • Sugar • Mineral Water • Milk</p>
+                                    </div>
+
+                                    <div class="mt-4 flex items-center justify-between gap-4">
+                                        <p class="text-2xl font-extrabold font-arimo leading-tight text-black">IDR</p>
+                                        <p
+                                            class="text-2xl font-arimo ml-[-0.5vw] relative font-extrabold leading-tight text-black">
+                                            45.</p>
+                                        <p
+                                            class="text-xl font-arimo ml-[-1vw] mt-[0.5vh] font-extrabold leading-tight text-black">
+                                            000</p>
+
+                                        <button type="button"
+                                            class="inline-flex items-center rounded-[2vw] bg-[#1C4816] px-5 py-2.5 text-sm font-medium text-white hover:brightness-[80%] focus:outline-none focus:ring-4  focus:ring-primary-300">
+                                            Add Item
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> --}}
     </section>
 </x-layout>

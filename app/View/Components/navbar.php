@@ -3,8 +3,10 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use Livewire\Attributes\On;
 use Illuminate\View\Component;
+use App\Helpers\CartManagement;
+use Illuminate\Contracts\View\View;
 
 class navbar extends Component
 {
@@ -14,6 +16,18 @@ class navbar extends Component
     public function __construct()
     {
         //
+    }
+
+    public $total_count = 0;
+
+    public function mount() {
+        $this->total_count = count(CartManagement::getCartItemsFromCookie());
+    }
+
+
+    #[On('updateCartCount')]
+    public function updateCartCount($total_count) {
+        $this->total_count = $total_count;
     }
 
     /**

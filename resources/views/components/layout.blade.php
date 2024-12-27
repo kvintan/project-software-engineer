@@ -21,7 +21,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>BomBazJuice</title>
+    <title>{{ $title ?? 'BomBazJuice' }}</title>
+    @livewireStyles
 </head>
 
 <body class="h-full">
@@ -32,7 +33,7 @@
         </main>
         <x-footer></x-footer>
     </div>
-
+    @livewireScripts
 </body>
 
 </html>
